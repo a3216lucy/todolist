@@ -9,4 +9,22 @@
     @apply font-roboto;
   }
 
+  #content1:checked ~ .tab-content1 {
+    @apply flex;
+  }
+  #content1:checked ~ .nav label[for="content1"] span{
+    @apply text-white font-medium border-b-2 border-blue-dark;
+  }
+  #content2:checked ~ .tab-content2 {
+    @apply flex;
+  }
+  #content2:checked ~ .nav label[for="content2"] span{
+    @apply text-white font-medium border-b-2 border-blue-dark;
+  }
+  #content3:checked ~ .tab-content3 {
+    @apply flex;
+  }
+  #content3:checked ~ .nav label[for="content3"] span{
+    @apply text-white font-medium border-b-2 border-solid border-blue-dark;
+  }
 }
