@@ -1,10 +1,10 @@
 import React from 'react';
-import PageTitle from './component/PageTitle';
+import AppContent from './component/AppContent';
+import AppHeader from './component/AppHeader';
 
 function App() {
   return (
     <div class="container max-w-fit m-0">
-      {/* <PageTitle class="text-2xl font-bold text-gray-500 text-center leading-8 my-5">To Do List</PageTitle> */}
 
       {/* tab section start  */}
       <input type="radio" name="tab" id="content1" class="hidden" checked></input>
@@ -23,13 +23,13 @@ function App() {
         </label>
       </div>
 
-      <div class="tab-content1 hidden w-full bg-gray-lighter overflow-hidden">
-        <div class="my-10 mx-40 flex justify-center">
+      <div class="tab-content1 hidden w-full bg-gray-light overflow-hidden">
+        <div class="my-10 mx-40 flex-column justify-center">
+        <div>
+        {/* <AppHeader /> */}
+        <AppContent />
+        </div>
           <p>
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum."
