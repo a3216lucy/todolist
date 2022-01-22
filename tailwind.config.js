@@ -12,15 +12,18 @@ module.exports = {
         'orange': '#f5A623',
         'orange-light': '#fff2dc',
         'gray-lighter': '#f2f2f2',
-        'gray':'c8c8c8',
+        'gray': '#c8c8c8',
         'gray-dark': '#757575',
         'white': '#ffffff',
-        'black':'#000000',
+        'black': '#000000',
         'gray-light': '#E1E1E1',
       },
       fontFamily: {
         "roboto": ["Roboto"],
       },
+      margin: { 
+        '68': '68px',
+      }
     },
   },
   variants: {

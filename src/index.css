@@ -27,4 +27,13 @@
   #content3:checked ~ .nav label[for="content3"] span{
     @apply text-white font-medium border-b-2 border-solid border-blue-dark;
   }
+  #todo::placeholder{
+    @apply font-medium text-black;
+  }
+  input[type="date"]::placeholder , #time::placeholder {
+    @apply font-light text-xs text-gray;
+  }
+  #comment::placeholder{
+    @apply font-light text-xs text-gray leading-normal;
+  }
 }
