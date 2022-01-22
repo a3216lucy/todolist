@@ -22,7 +22,9 @@ module.exports = {
         "roboto": ["Roboto"],
       },
       margin: { 
+        '35': '35px',
         '68': '68px',
+        '75': '75px',
       }
     },
   },
