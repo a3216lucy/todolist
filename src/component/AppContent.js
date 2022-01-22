@@ -11,24 +11,6 @@ import { faPlusSquare, faPen } from '@fortawesome/free-solid-svg-icons';
 
 // import PageTitle from './PageTitle';
 
-// function InputDate() {
-// var inputDate = document.querySelector("#date");
-// var changeType = function(){
-//   this.type = "date";
-//   console.log(this);
-// }
-// var removeEvent = function(){
-//   console.log(this);
-//   if(this.focus){
-//     this.removeEventListener("focus",changeType);
-//     this.removeEventListener("blur",removeEvent)
-//   }
-// }
-// inputDate.addEventListener("focus",changeType);
-// inputDate.addEventListener("blur",removeEvent);
-// }
-
-// function AppContent() {
 class AppContent extends React.Component {
   // constructor() {
   //   super();
@@ -58,16 +40,6 @@ class AppContent extends React.Component {
         $('.pen').addClass('text-blue');
         $('.body').show().slideDown();
       });
-
-      // $('.body').hide();
-      // $('.pen').on('click', function () {
-      //   $('.pen').addClass('text-blue');
-      //   $('.body').show().slideDown();
-      // });
-      // $('.btn-submit ,.btn-cancel').on('click', function () {
-      //   $('.pen').removeClass('text-blue');
-      //   $('.body').hide();
-      // });
     });
   }
 
