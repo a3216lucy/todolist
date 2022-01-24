@@ -1,8 +1,7 @@
 import React from 'react';
-import TodoList from './component/TodoList';
 import AddTodo from './component/AddTodo';
-import AppHeader from './component/AppHeader';
 import TodoModal from './component/TodoModal';
+import TodoItem from './component/TodoItem';
 
 function App() {
   return (
@@ -28,10 +27,9 @@ function App() {
       <div class="tab-content1 hidden w-full bg-gray-light overflow-hidden">
         <div class="my-10 mx-40 flex-column justify-center">
         <div>
-        {/* <AppHeader /> */}
         {/* <TodoModal /> */}
         <AddTodo /> 
-        <TodoList />
+        <TodoItem />
         
         </div>
           <p>

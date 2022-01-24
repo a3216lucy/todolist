@@ -58,7 +58,7 @@ function AddTodo() {
       completed,
       stared,
     });
-    if (title && comment) {
+    if (title) {
       dispatch(
         addTodo({
           id: uuid(),
@@ -76,7 +76,7 @@ function AddTodo() {
   };
 
   // $(function () {
-  //   // $('.header , .body').hide();
+  //   $('.header , .body').hide();
   //   $('#add-task').on('focus', function () {
   //     $('#add-task').hide();
   //     $('.pen').addClass('text-blue');
@@ -89,15 +89,11 @@ function AddTodo() {
   //   });
   //   $('.btn-submit').on('click', function () {
   //     $('.pen').removeClass('text-blue');
-  //     $('.body ').hide();
+  //     $('.header , .body ').hide();
   //     $('#add-task').show();
   //   });
-  //   $('.pen').on('click', function () {
-  //     $('.pen').addClass('text-blue');
-  //     $('.body').show().slideDown();
-  //   });
   // });
-  // }
+  
 
   return (
     <div class="w-96 max-w-screen-xl mx-auto">
@@ -130,7 +126,7 @@ function AddTodo() {
             </div> */}
         </div>
       </div>
-      <div class="w-96 body flex-col float-left bg-gray-lighter shadow-md rounded-sm h-80">
+      <div class="w-96 body flex-col float-left bg-gray-lighter shadow-md rounded-sm h-80 mb-5">
         <div class="mt-5 mx-12">
           <FontAwesomeIcon icon={faCalendarAlt} />
           <label
