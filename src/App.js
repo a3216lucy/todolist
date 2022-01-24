@@ -1,6 +1,8 @@
 import React from 'react';
-import AppContent from './component/AppContent';
+import TodoList from './component/TodoList';
+import AddTodo from './component/AddTodo';
 import AppHeader from './component/AppHeader';
+import TodoModal from './component/TodoModal';
 
 function App() {
   return (
@@ -27,7 +29,10 @@ function App() {
         <div class="my-10 mx-40 flex-column justify-center">
         <div>
         {/* <AppHeader /> */}
-        <AppContent />
+        {/* <TodoModal /> */}
+        <AddTodo /> 
+        <TodoList />
+        
         </div>
           <p>
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla

@@ -15,9 +15,7 @@ const initialValue = {
 
 export const todoSlice = createSlice({
   name: 'todo',
-  comment:'comment',
-  state: initialValue,
-  // deadline: initialValue,
+  initialState: initialValue,
   reducers: {
     addTodo: (state, action) => {
       state.todoList.push(action.payload);
@@ -39,4 +37,4 @@ export const todoSlice = createSlice({
 });
 
 export const { addTodo } = todoSlice.actions;
-export default todoSlice.reducers;
+export default todoSlice.reducer;
