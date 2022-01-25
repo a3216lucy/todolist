@@ -9,11 +9,10 @@ function TodoItem() {
   return ( 
   <div>
     {sortedTodoList && sortedTodoList.length > 0
-     ? sortedTodoList.map((todo) => <TodoList todo={todo} />)
+     ? sortedTodoList.map((todo) => <TodoList key={todo.id} todo={todo} />)
      : 'no todo found'}
     </div>
   );
-  
 }
 
 export default TodoItem;

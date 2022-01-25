@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarAlt,
@@ -12,40 +11,17 @@ import { faPlusSquare, faPen } from '@fortawesome/free-solid-svg-icons';
 import { addTodo } from '../slices/todoSlice';
 import { v4 as uuid } from 'uuid';
 
-// import PageTitle from './PageTitle';
 
-// const date, time;
-function AddTodo() {
-  // export default class AppContent extends React.Component {
-  // constructor() {
-  //   super();
-  // }
+function AddTodo({ type, addTodoModal, setAddTodoModal }) {
 
-  // componentDidMount(){
   const [title, setTitle] = useState('');
   const [deadline_date, setDate] = useState();
   const [deadline_time, setTime] = useState();
   const [file, setFile] = useState([]);
   const [completed, setCompleted] = useState('progress');
+  const [stared, setStared] = useState(false);
   const [comment, setComment] = useState('');
-  const [stared, setStared] = useState('false');
   const dispatch = useDispatch();
-
-  // const addTodo = (e) => {
-  //   const { handleAddTodo } = this.props;
-  //   handleAddTodo(e);
-
-  //   this.setState({
-  //     id: uuid(),
-  //     title,
-  //     completed,
-  //     deadline_date,
-  //     deadline_time,
-  //     file,
-  //     comment,
-  //     stared,
-  //   });
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,38 +51,10 @@ function AddTodo() {
     }
   };
 
-  // $(function () {
-  //   $('.header , .body').hide();
-  //   $('#add-task').on('focus', function () {
-  //     $('#add-task').hide();
-  //     $('.pen').addClass('text-blue');
-  //     $('.header , .body ').show().slideDown().delay(3000);
-  //   });
-  //   $('.btn-cancel').on('click', function () {
-  //     $('.pen').removeClass('text-blue');
-  //     $('.header , .body ').hide();
-  //     $('#add-task').show();
-  //   });
-  //   $('.btn-submit').on('click', function () {
-  //     $('.pen').removeClass('text-blue');
-  //     $('.header , .body ').hide();
-  //     $('#add-task').show();
-  //   });
-  // });
-  
-
   return (
+    <div>
+    {addTodoModal && (
     <div class="w-96 max-w-screen-xl mx-auto">
-      {/* <PageTitle>This is app content.</PageTitle> */}
-
-      <div class="w-96 flex flex-col justify-center bg-white shadow-md rounded-sm mb-4">
-        <input
-          type="text"
-          id="add-task"
-          class="px-2 py-2 rounded-sm"
-          placeholder="＋ Add Task"
-        ></input>
-      </div>
       <div class="header w-96 flex flex-col justify-center bg-gray-lighter shadow-md rounded-sm h-14 border-b border-gray">
         <div class="flex flex-row mx-3.5 my-1 ">
           <input type="checkbox" id="checkbox" class="mx-2" />
@@ -117,13 +65,14 @@ function AddTodo() {
             placeholder="Type Something Here..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
           ></input>
-          {/* <div class="ml-16 mx-2 cursor-pointer">
+          <div class="ml-16 mx-2 cursor-pointer">
               <FontAwesomeIcon icon={faStar} />
             </div>
             <div class="pen mx-2 cursor-pointer">
               <FontAwesomeIcon icon={faPen} />
-            </div> */}
+            </div>
         </div>
       </div>
       <div class="w-96 body flex-col float-left bg-gray-lighter shadow-md rounded-sm h-80 mb-5">
@@ -187,12 +136,14 @@ function AddTodo() {
           onChange={(e) => setComment(e.target.value)}
         ></textarea>
         <div class="mt-6 shadow-md">
-          <button class="w-1/2 btn-cancel">✕ Cancel</button>
+          <button class="w-1/2 btn-cancel" onClick={() => setAddTodoModal(false)} onKeyDown={() => setAddTodoModal(false)} tabIndex={0}>✕ Cancel</button>
           <button class="w-1/2 btn-submit" onClick={(e) => handleSubmit(e)}>
-            ＋ Add Task
+            ＋ {type === "add" ? 'Add Task' : 'Save'}
           </button>
         </div>
       </div>
+    </div>
+    )}
     </div>
   );
 }
