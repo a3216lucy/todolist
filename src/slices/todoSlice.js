@@ -33,8 +33,26 @@ export const todoSlice = createSlice({
         );
       }
     },
+    updateTodo: (state, action) => {
+      const todoList = window.localStorage.getItem('todoList');
+      if (todoList) {
+        const todoListArr = JSON.parse(todoList);
+        todoListArr.forEach((todo) => {
+          if (todo.id === action.payload.id) {
+            todo.status = action.payload.status;
+            todo.file = action.payload.file;
+            todo.comment = action.payload.comment;
+            todo.deadline_date = action.payload.deadline_date;
+            todo.deadline_time = action.payload.deadline_time;
+            todo.title = action.payload.title;
+          }
+        });
+        window.localStorage.setItem('todoList', JSON.stringify(todoListArr));
+        state.todoList = [...todoListArr];
+      }
+    },
   },
 });
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, updateTodo } = todoSlice.actions;
 export default todoSlice.reducer;

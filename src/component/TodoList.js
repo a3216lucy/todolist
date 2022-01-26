@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
+import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarAlt,
@@ -9,18 +10,31 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { faPlusSquare, faPen } from '@fortawesome/free-solid-svg-icons';
 import AddTodo from './AddTodo';
+// import { updateTodo } from '../slices/todoSlice';
+import { updateTodo } from "../redux/actions";
 
-function TodoList({ todo, stared, setStared }) {
+function TodoList({ todo }) {
   const [editTodo, setEditTodo] = useState(false);
-  
+  const [checked, setChecked] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (todo.status === 'completed') {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  }, [todo.status]);
+
+  const handleCheck = () => {
+    setChecked(!checked);
+    dispatch(
+      updateTodo({ ...todo, status: checked ? 'in progress' : 'completed' })
+    );
+  };
 
   const handleStar = () => {
     console.log('Star');
-  };
-
-  const handleEdit = () => {
-    console.log('Edit');
-    setEditTodo(true);
   };
 
   // $(function () {
@@ -50,8 +64,8 @@ function TodoList({ todo, stared, setStared }) {
       <div class="w-96 max-w-screen-xl mx-auto">
         <div class="list w-96 flex flex-col justify-center bg-gray-lighter shadow-md rounded-sm h-20 border-b border-gray my-2">
           <div class="flex flex-row mx-3.5 my-1">
-            <input type="checkbox" id="checkbox" class="mx-2" />
-            <p class="mx-0.5 font-medium w-20">{todo.title} </p>
+            <input type="checkbox" id="checkbox" class="mx-2" onChange={handleCheck} isChecked={checked}/>
+            <p class="mx-0.5 font-medium w-20" as={todo.completed && "del"}>{todo.title} </p>
             <div class="ml-56 mx-2 cursor-pointer">
               <FontAwesomeIcon
                 icon={faStar}
@@ -63,8 +77,8 @@ function TodoList({ todo, stared, setStared }) {
             </div>
             <div
               class="editPen mx-2 cursor-pointer"
-              onClick={handleEdit}
-              onKeyDown={handleEdit}
+              onClick={() => setEditTodo(true)}
+              onKeyDown={() => setEditTodo(true)}
               role="button"
               tabIndex={0}
             >
@@ -85,7 +99,12 @@ function TodoList({ todo, stared, setStared }) {
           </div>
         </div>
       </div>
-      <AddTodo type="edit" AddTodoModal={editTodo} setAddTodoModal={setEditTodo} />
+      <AddTodo
+        type="update"
+        AddTodoModal={editTodo}
+        setAddTodoModal={setEditTodo}
+        todo={todo}
+      />
     </>
   );
 }
